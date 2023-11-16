@@ -28,10 +28,10 @@
     <style>
         .background-video-section {
             position: relative !important;
-            top: 10px;
+            top: 100px;
             left:0;
             width: 100%;
-            height: 790px;
+            height: 700px;
             opacity: 0.35;
             overflow: hidden;
             z-index: -1 !important;
@@ -41,10 +41,8 @@
             position: relative !important;
             top: 100px;
             z-index: 1 !important;
-            height: 924px;
+            height: 700px;
         }
-
-        
 
             /* 전체 화면 가로선을 위한 스타일 */
             .full-width-line {
@@ -142,11 +140,6 @@
                 font-weight: bolder;
                 font-size: 3vi;
             }
-            .main-header {
-                padding : 0px;
-                margin : 0px;
-            }
-         
 
     </style>
 </head>
@@ -173,17 +166,16 @@
                         <div class="row align-items-center">
                             <!-- Logo -->
                             <div class="col-xl-2 col-lg-2">
-                                <div class="logo" >
-                                    <a href="/" ><img src={{url_for('static', filename="/assets/img/logo_bg1.png")}} alt="" style="width:200px; height:100px; margin-top:5%;"></a>
+                                <div class="logo">
+                                    <a href="/"><img src={{url_for('static', filename="/assets/img/logo/logo.png")}} alt=""></a>
                                 </div>
                             </div>
                             <div class="col-xl-10 col-lg-10">
-                                <div class="menu-wrapper d-flex align-items-center justify-content-end" style="margin-top:50px;">
+                                <div class="menu-wrapper d-flex align-items-center justify-content-end">
                                     <!-- Main-menu -->
                                     <div class="main-menu d-none d-lg-block">
                                         <nav>
-                                            <ul id="navigation">
-                                                <!--                                                                                          
+                                            <ul id="navigation">                                                                                          
                                                 <li><a href="index.html">Home</a></li>
                                                 <li><a href="packages.html">Packages</a></li>
                                                 <li><a href="help.html">Help</a></li>
@@ -195,11 +187,9 @@
                                                     </ul>
                                                 </li>
                                                 <li><a href="contact.html">Contact</a></li>
-                                                -->
                                                 <!-- Button -->
-                                                <li class="button-header"><a href="/user/register" class="btn">Sign Up</a></li>
-                                                <li class="button-header margin-left"><a href="/user/login" class="btn">Sign In</a></li>
-
+                                                <li class="button-header margin-left "><a href="/user/register" class="btn">Sign Up</a></li>
+                                                <li class="button-header"><a href="/user/login" class="btn3">Sign In</a></li>
                                             </ul>
                                         </nav>
                                     </div>
@@ -212,7 +202,6 @@
                         </div>
                     </div>
                 </div>
-                
                 <div class="background-video-section" data-vide-bg="static/assets/img/disabled1.mp4">
             </div>
         </div>
@@ -233,20 +222,18 @@
                             <div class="col-xl-5 col-lg-5 col-md-9 ">
                                 <div class="hero__caption">
                                     <span data-animation="fadeInLeft" data-delay=".3s">Best Domain & hosting service provider</span>
-                                    <h1 data-animation="fadeInLeft" data-delay=".6s ">AI - SPEAKER</h1>
-                                    <p data-animation="fadeInLeft" data-delay=".8s">
-                                        구음장애 환자를 위한 음성변환 서비스
-                                    </p>
+                                    <h1 data-animation="fadeInLeft" data-delay=".6s ">Powerful web hosting</h1>
+                                    <p data-animation="fadeInLeft" data-delay=".8s">Supercharge your WordPress hosting with detailed 
+                                        website analytics, marketing tools, security, and data 
+                                    backups all in one place.</p>
                                     <!-- Slider btn -->
                                     <div class="slider-btns">
                                         <!-- Hero-btn -->
-                                        <!--
                                         <a data-animation="fadeInLeft" data-delay="1s" href="industries.html" class="btn radius-btn" >get started</a>
-                                        -->
                                     </div>
                                 </div>
                             </div>
-<!--
+
                             <div id="center-container" class="col-xl-6 col-lg-6">
                                 <div id="center-circle" class="hero__img d-none d-lg-block f-right">
                                     <span id="circle-text" alt="" data-animation="fadeInRight" data-delay="1s">
@@ -254,7 +241,6 @@
                                     </span>
                                 </div>
                             </div>
--->
 <!--
                             <div class="col-xl-6 col-lg-6">
                                 <div class="hero__img d-none d-lg-block f-right">

@@ -24,6 +24,18 @@ app.config['MYSQL_DB'] = 'Insa4_IOTB_final_3'
 
 mysql = MySQL(app)
 
+@app.route('/user/loginmain')
+def loginmain():
+    return render_template('/user/loginmain.html')
+
+@app.route('/main/index')
+def index():
+    return render_template('/main/index.html')
+
+@app.route('/user/mypage')
+def mypage():
+    return render_template('/user/mypage.html')
+
 @app.route('/')
 def main():
     return render_template("/main/index.html")
