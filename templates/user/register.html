@@ -124,6 +124,81 @@
 
     </style>
 </head>
+<script>
+function CheckUser(){
+    var regExpId = /^[a-z|A-Z|ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/;
+    var regExpName =/^[a-z|A-Z|ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/; /* var regExpName = /^[가-힣]+$/; */
+    
+    var regExpPhone1 = /^\d{3}$/; /*  minlength=3 maxlength=3 */
+    var regExpPhone2 = /^\d{3,4}$/; /* minlength=3 maxlength=4 */
+    var regExpPhone3 = /^\d{4}$/; /* minlength=3 maxlength=4 */
+    var regExpPhone =/^\d{3}-\d{3,4}-\d{4}$/; /* phone 통합본 */
+//    var regExpEmail01 =/^[0-9a-zA-Z]+$/;
+//    var regExpEmail02 =/^[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/;
+    
+    // 변수선언
+    var form = document.User; // form.User 을 form으로 지정
+    var id = form.id.value;
+    var name = form.name.value;
+    var password1 = form.password1.value;
+    var password2 = form.password2.value;
+    var phone1 = form.phone1.value;
+    var phone2 = form.phone2.value;
+    var phone3 = form.phone3.value;
+    var phone = form.phone1.value + "-"+form.phone2.value+"-"+form.phone3.value;
+    var gender = form.gender.value;
+    var date = form.date.value;
+    var postcode = form.postcode.value;
+    var address = form.address.value;
+    var extraAddress = form.extraAddress.value;
+//    var emailId = form.emailId.value;
+//    var emailDomain = form.domainInput.value;
+
+    if (!id) {
+        alert("아이디를 입력하세요.");
+        form.id.select();
+        return;
+    } else if (!regExpId.test(id)) {
+        alert("아이디는 문자로 시작해야 합니다.");
+        form.id.select();
+        return;
+    }
+
+
+//    if(!regExpName.test(name)){
+//        alert("이름은 한글 혹은 영문으로만 입력합니다.")
+//        form.name.select();
+//        return;
+//    }
+
+    if(!regExpPhone1.test(phone1)){
+        alert("연락처를 입력해주세요.")
+        form.phone1.select();
+        return;
+    }
+    if(!regExpPhone2.test(phone2)){
+        alert("연락처를 입력해주세요.")
+        form.phone2.select();
+        return;
+    }
+    if(!regExpPhone3.test(phone3)){
+        alert("연락처를 입력해주세요.")
+        form.phone3.select();
+        return;
+    }
+
+    if(password1 != password2){
+        alert("비밀번호가 일치하지 않습니다")
+        form.password1.value="";
+        form.password2.value="";
+        form.password1.focus();
+        return;
+    }
+
+    form.submit();
+}
+</script>
+
 <body>
     <!-- ? Preloader Start 
     <div id="preloader-active">
@@ -144,7 +219,7 @@
 
 <main class="login-body" data-vide-bg="/static/assets/img/login-bg.mp4">
     <!-- Login Admin -->
-    <form class="form-default" action="login-bg.mp4" method="POST">
+    <form action = '/user/register' name='User' class="form-default" method="POST" enctype = "multipart/form-data">
         
         <div class="login-form">
             <!-- logo-login -->
@@ -155,7 +230,7 @@
 
             <div class="form-input" style="display: flex; align-items: center; width: 100%;">
                 <label for="name" style="margin-right: 10px; white-space: nowrap;">Full name</label>
-                <input type="text" name="name" placeholder="Full name">
+                <input type="text" name="user_Name" id="name" placeholder="Full name">
             </div>
             
             <div class="form-input" style="display: flex; align-items: center; width: 100%;">
@@ -192,7 +267,8 @@
                     <label for="name">Password</label>
                 <div class="form-input" style = "display: flex; width:auto; margin: 0;">
                 <input type="password" class="form-control mb-2 mr-sm-2" id="password1" name="user_Pwd" placeholder="비밀번호 입력" required>
-                <input type="password" class="form-control mb-2 mr-sm-2" id="password2" placeholder="비밀번호 확인" required>            </div>
+                <input type="password" class="form-control mb-2 mr-sm-2" id="password2" placeholder="비밀번호 확인" required>
+                </div>
                 </div>
 
                 <div class="responsive-flex" style="display: flex; justify-content: space-between;">
@@ -211,20 +287,20 @@
                 <div class="responsive-flex" style="display: flex; justify-content: space-between; margin-top: 0;">
                     <!-- Selects Row -->
                     <div class="form-input" style="flex: 1; padding-right: 10px;">
-                        <select name="user_gender" id="gender" class="form-control mb-2 mr-sm-2" oninput="checkPhoneAuto()" required>
-                            <option value="male">남자</option>
-                            <option value="female">여자</option>
+                        <select name="user_Gender" id="gender" class="form-control mb-2 mr-sm-2" required>
+                            <option alt="male" value="남">남자</option>
+                            <option alt="female" value="여">여자</option>
                         </select>
                     </div>
                     <div class="form-input disease" style="flex: 1; padding-left: 10px;">
-                        <select style="width:100px; height: 50px; font-size:4px; !important;" name="user_disease" id="disease" class="form-control mb-2 mr-sm-2" oninput="checkPhoneAuto()" required>
-                            <option value="brain">뇌신경장애</option>
-                            <option value="language">언어/청각장애</option>
-                            <option value="larynx">후두장애</option>
+                        <select name="user_Disability" style="width:100px; height: 50px; font-size:4px; !important;" id="disability" class="form-control mb-2 mr-sm-2" required>
+                            <option alt="brain" value="뇌신경장애">뇌신경장애</option>
+                            <option alt="language" value="언어/청각장애">언어/청각장애</option>
+                            <option alt="larynx" value="후두장애">후두장애</option>
                         </select>
                     </div>
                     <div class="form-input birthdate-group" style="flex: 1; padding-left: 10px; width:20px;">
-                        <input type="date" name="user_birthdate" id="birthdate" class="form-control mb-2 mr-sm-2" oninput="checkPhoneAuto()" required>
+                        <input type="date" name="user_Date" id="date" class="form-control mb-2 mr-sm-2" required>
                     </div>
                 </div>
                 
@@ -242,17 +318,17 @@
                         </button>
                         </div>
                         <div class="post-number" style="margin-left: 60px;">
-                            <input type="text" class="form-control form-control-lg" name="postcode" id="postcode" placeholder="우편번호" aria-label="Recipient's username" aria-describedby="button-addon2" required>
+                            <input type="text" class="form-control form-control-lg" name="user_PostNumber" id="postcode" placeholder="우편번호" aria-label="Recipient's username" aria-describedby="button-addon2" required>
                         </div>
                     </div>
                     
                     <!-- 두 번째 행 -->
                     <div class="row">
                         <div class="col-md-6">
-                            <input class="form-control form-control-lg" type="text" name="address" id="address" placeholder="주소" required>
+                            <input class="form-control form-control-lg" type="text" name="user_Address" id="address" placeholder="주소" required>
                         </div>
                         <div class="col-md-6">
-                            <input type="text" aria-label="Last name" class="form-control form-control-lg" name="extraAdd" id="extraAddress" placeholder="상세주소">
+                            <input type="text" aria-label="Last name" class="form-control form-control-lg" name="user_Details" id="extraAddress" placeholder="상세주소">
                         </div>
                     </div>
                 </div>
@@ -261,7 +337,7 @@
 
 
             <div class="form-input pt-30" style="margin-top : 3rem;">
-                <input type="button" name="button" value="SIGN UP" style="background-color: #3366FF; height: 45px;" onclick = "location.href='/user/register'";>
+                <input type="button" name="button" value="SIGN UP" style="background-color: #3366FF; height: 45px;" onclick = "CheckUser()" id="idCheck">
             </div>
             <!-- Forget Password -->
             <a href="/user/login" class="registration">login</a>
@@ -445,7 +521,7 @@
 
 <script>
     function execDaumPostcode() {
-        new daum.Postcode({
+        var postcode = new daum.Postcode({
             oncomplete: function(data) {
                 // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
 
@@ -488,7 +564,11 @@
                 document.getElementById("address").value = addr;
                 // 커서를 상세주소 필드로 이동한다.
                 document.getElementById("detailAddress").focus();
+
+                //주소를 선택했으므로 닫습니다.
+                postcode.close();
             }
-        }).open();
+        });
+        postcode.open();
     }
 </script>

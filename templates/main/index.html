@@ -85,7 +85,11 @@
                                     <!-- Main-menu -->
                                     <div class="main-menu d-none d-lg-block">
                                         <nav>
-                                            <ul id="navigation">                                                                                          
+                                            <ul id="navigation">
+                                                {% if 'user' in session %}
+                                                    <li><h3 class="display-4" style="color: #3366FF; display: inline;"><span>{{message}}</span></h3><h1 style="display: inline; color: #f03699;"> 님 반갑습니다 !</h1></li>
+                                                {% endif %}
+
                                                 <li><a href="index.html">Home</a></li>
                                                 <li><a href="packages.html">Packages</a></li>
                                                 <li><a href="help.html">Help</a></li>
@@ -98,8 +102,13 @@
                                                 </li>
                                                 <li><a href="contact.html">Contact</a></li>
                                                 <!-- Button -->
-                                                <li class="button-header margin-left "><a href="/user/register" class="btn">Sign Up</a></li>
-                                                <li class="button-header"><a href="/user/login" class="btn3">Sign In</a></li>
+                                                {% if 'user' in session %}
+                                                <li class="button-header margin-left "><a href="/user/logout" class="btn">Log Out</a></li>
+                                                <li class="button-header margin-left"><a href="/user/mypage" class="btn3">MyPage</a></li>
+                                                {% else %}
+                                                    <li class="button-header margin-left "><a href="/user/registerForm" class="btn">Sign Up</a></li>
+                                                    <li class="button-header margin-left"><a href="/user/loginForm" class="btn3">Sign In</a></li>
+                                                {% endif %}
                                             </ul>
                                         </nav>
                                     </div>
