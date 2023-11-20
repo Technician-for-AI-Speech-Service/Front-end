@@ -38,13 +38,14 @@
     <style>
 
         .register-body {
+
             background-image: url("{{ url_for('static', filename='assets/img/6723.jpg') }}");
-            background-size: ; /* 배경 이미지가 컨테이너를 꽉 채우도록 설정 */
+            
+            background-size: ;  배경 이미지가 컨테이너를 꽉 채우도록 설정 
             width:100%;
             height:839px;
         }
-        
-        
+
 
         .login-form {
             max-height: 80%; /* 예시로 설정한 최대 높이 */
@@ -153,7 +154,13 @@
 <!--
 data-vide-bg="/static/assets/img/login-bg.mp4"
 -->    
-<main class="register-body">   
+<main class="register-body">
+    
+    <div class="slider-area slider-bg ">
+        <div class="slider-active">
+            <!-- Single Slider -->
+            <div class="single-slider d-flex align-items-center slider-height">
+
     <!-- Login Admin -->
     <form class="form-default" action="/user/login" method="GET">
         
@@ -164,7 +171,8 @@ data-vide-bg="/static/assets/img/login-bg.mp4"
                 <a href="/"><img src={{url_for('static', filename="assets/img/key1.png")}} alt=""></a>
             </div>
 -->
-            <h2>회원 가입</h2>
+            <h1 style="text-align: center;">MY PAGE</h1>
+            <h2>회원 정보</h2>
             <div class="form-input" style="display: flex; align-items: center; width: 100%;">
                 <label for="name" style="margin-right: 10px; white-space: nowrap;">Full name</label>
                 <input type="text" name="name" placeholder="Full name">
@@ -270,10 +278,16 @@ data-vide-bg="/static/assets/img/login-bg.mp4"
                 </div>               
 
 
-
+<!--
             <div class="form-input pt-30" style="margin-top : 3rem;">
                 <input type="submit" name="submit" value="SIGN UP" style="background-color: #3366FF; height: 45px;">
             </div>
+-->
+            <div class="form-input pt-30" style="margin-top: 3rem;">
+                <input type="button" name="button" value="UPDATE" style="background-color: #3366FF; height: 45px; width: 130px; margin-right: 10px;" onclick="location.href='/user/loginmain';">
+                <input type="button" name="button" value="BACK" style="background-color: #3366FF; height: 45px; width: 130px;" onclick="location.href='/user/loginmain';">
+            </div>
+
             <!-- Forget Password -->
 <!--
             <a href="/user/login" class="registration">login</a>
@@ -281,6 +295,11 @@ data-vide-bg="/static/assets/img/login-bg.mp4"
         </div>
     </form>
     <!-- /end login form -->
+
+        </div>
+    </div>
+</div>
+
 </main>
 
     <!-- Scroll Up -->

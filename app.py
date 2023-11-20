@@ -28,13 +28,21 @@ mysql = MySQL(app)
 def loginmain():
     return render_template('/user/loginmain.html')
 
-@app.route('/main/index')
-def index():
-    return render_template('/main/index.html')
+# @app.route('/main/index')
+# def index():
+#     return render_template('/main/index.html')
 
 @app.route('/user/mypage')
 def mypage():
     return render_template('/user/mypage.html')
+
+@app.route('/user/mypage1')
+def mypage1():
+    return render_template('/user/mypage1.html')
+
+@app.route('/user/test')
+def test():
+    return render_template('/user/test.html')
 
 @app.route('/')
 def main():
@@ -60,4 +68,5 @@ def loginMain():
 
 # 실행
 if __name__ == '__main__':
-    app.run(debug=False, host="0.0.0.0")
+    # app.run(debug=False, host="0.0.0.0")
+    app.run(debug=True, host="")
