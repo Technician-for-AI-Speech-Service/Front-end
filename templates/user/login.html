@@ -62,7 +62,13 @@
 
 <main class="login-body">
 
+<<<<<<< HEAD
     <form class="form-default" action="/user/loginmain" method="GET">
+=======
+
+        <!-- Login Admin -->
+    <form class="form-default" action="/user/login" method="POST">
+>>>>>>> origin/front_end_v3
         
         <div class="login-form">
             <!-- logo-login -->
@@ -75,12 +81,12 @@
             <div class="form-input">
                 <i class="fa fa-street-view" style="color: #3366FF; font-size: 2.3rem;"></i>
                 <label for="name">ID</label>
-                <input type="ID" name="ID" placeholder="ID">
+                <input type="ID" id="user_Id" name="user_Id" placeholder="ID">
             </div>
             <div class="form-input">
                 <i class="fa fa-lock" style="color: #3366FF; font-size: 2rem;"></i>
                 <label for="name">Password</label>
-                <input type="password" name="password" placeholder="Password">
+                <input type="password" id="user_Pwd" name="user_Pwd" placeholder="Password">
             </div>
 
             <div class="form-input pt-30" style= "margin-bottom: 0;">
@@ -88,7 +94,7 @@
             </div>
 
             <div class="form-input pt-30" style="margin-top : 1rem;">
-                <input type="button" name="button" value="SIGN UP" style="background-color: #3366FF; height: 45px;" onclick = "location.href='/user/register'";>
+                <input type="button" name="button" value="SIGN UP" style="background-color: #3366FF; height: 45px;" onclick = "location.href='/user/registerForm'";>
                 
             </div>
             <!-- Forget Password -->
@@ -100,6 +106,24 @@
     <!-- /end login form -->
 </main>
 
+<!-- 로그인 실패 modal 창-->
+<div id ="login-fail-modal" class="modal fade">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">로그인 실패</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+          </div>
+          <div class="modal-body">
+            아이디와 비밀번호를 확인해 주세요.
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">확인</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
     <script src={{url_for('static', filename="assets/js/vendor/modernizr-3.5.0.min.js")}}></script>
     <!-- Jquery, Popper, Bootstrap -->
@@ -148,8 +172,38 @@
     </body>
 </html>
 
-<!--
-<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
--->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+$(document).ready(function() {
+  $('form').submit(function(event) {
+    event.preventDefault(); // 서버로 폼을 전송하지 않도록 방지
+
+    $.ajax({
+      url: '/user/login',
+      type: 'post',
+      dataType: 'json',
+      data: $('form').serialize(),
+      success: function(result) {
+        if (result.message === "success") {
+//        sessionStorage.setItem('user_Name',result.user_Name);
+          window.location.href="/";
+        } else {
+          //로그인 실패시 modal 뛰우기
+          $('#login-fail-modal').modal('show');
+          
+          //로그인 실패시 alert 뛰우기
+          //alert('아이디 or 비밀번호가 올바르지 않습니다.');
+        }
+      },
+      error: function(xhr, status, error) {
+          //로그인 실패시 modal 뛰우기
+          $('#login-fail-modal').modal('show');
+
+        // alert('아이디 or 비밀번호가 올바르지 않습니다.: ' + xhr.responseText);
+      }
+    });
+  });
+});
+</script>
 
 <script src="form.js"></script>
