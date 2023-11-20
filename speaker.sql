@@ -81,6 +81,8 @@ ALTER TABLE t_Speech
     ADD CONSTRAINT FK_User_user_Id_Speech_user_Id FOREIGN KEY (user_Id)
         REFERENCES t_User (user_Id) ON DELETE RESTRICT ON UPDATE RESTRICT;
 
+
+
 -- Foreign Key 삭제 SQL - User(user_Id)
 -- ALTER TABLE User
 -- DROP FOREIGN KEY FK_User_user_Id_Speech_user_Id;
