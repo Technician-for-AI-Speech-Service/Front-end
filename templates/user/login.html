@@ -33,6 +33,15 @@
 	<link rel="stylesheet" href={{url_for('static', filename="assets/css/nice-select.css")}}>
 	<link rel="stylesheet" href={{url_for('static', filename="assets/css/style.css")}}>
 
+<style>
+    .login-body {
+        background-image: url("{{ url_for('static', filename='assets/img/login1.png') }}");
+        background-size: cover; /* 배경 이미지가 전체 영역을 커버하도록 설정 */
+        background-repeat: no-repeat; /* 이미지가 반복되지 않도록 설정 */
+        background-position: center; /* 이미지가 중앙에 위치하도록 설정 */
+    }
+</style>
+
 </head>
 <body>
 
@@ -51,17 +60,18 @@
     <!-- Preloader Start-->
 
 
-   <main class="login-body" data-vide-bg="/static/assets/img/login-bg.mp4">
+<main class="login-body">
 
 
         <!-- Login Admin -->
-    <form class="form-default" action="/user/login" method="POST">
-        
+    <form class="form-default" action="/user/login" method="POST">        
         <div class="login-form">
             <!-- logo-login -->
+            
             <div class="logo-login">
-                <a href="/"><img src={{url_for('static', filename="assets/img/logo/loder.png")}} alt=""></a>
+                <a href="/"><img src={{url_for('static', filename="assets/img/key1.png")}} alt=""></a>
             </div>
+           
             <h2>Login Here</h2>
             <div class="form-input">
                 <i class="fa fa-street-view" style="color: #3366FF; font-size: 2.3rem;"></i>
@@ -73,9 +83,11 @@
                 <label for="name">Password</label>
                 <input type="password" id="user_Pwd" name="user_Pwd" placeholder="Password">
             </div>
+
             <div class="form-input pt-30" style= "margin-bottom: 0;">
                 <input type="submit" name="submit" value="LOG IN" style="background-color: #f03699; height:45px;">
             </div>
+
             <div class="form-input pt-30" style="margin-top : 1rem;">
                 <input type="button" name="button" value="SIGN UP" style="background-color: #3366FF; height: 45px;" onclick = "location.href='/user/registerForm'";>
                 
