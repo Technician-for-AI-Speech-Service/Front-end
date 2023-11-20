@@ -37,14 +37,7 @@ def register():
 def login():
     return render_template('/user/login.html')
 
-@app.route('/main/loginMain')
-def loginMain():
-    if 'user' in session:
-        user = session['user']
-        user_Name = user['user_Name']
-        return render_template('/main/loginMain.html', message=user_Name)
-    else:
-        return render_template('user/loginForm.html')
+
 
 # 실행
 if __name__ == '__main__':
